@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClassifyAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+  </header>
+  <main>
+    <h1>ClassifyAI</h1>
+    <p id="text">Intelligent Document Classification System</p>
+    <div class="upload-box">
+      <form action="/" method="POST" enctype="multipart/form-data">
+        <label for="file-upload">Drop your PDF here or click to upload</label>
+        <input type="file" id="file-upload" name="file-upload" accept=".pdf" required>
+        <button type="submit" id="btn">Upload</button>
+      </form>
+  </div>
+
+    {% if category %}
+    <div class="results">
+      <h2>Predicted Category: <span>{{ category }}</span></h2>
+      <h2 id="percentage">Confidence: <span>{{ confidence }}%</span></h2>
+    </div>
+  {% else %}
+    <p>No file uploaded yet.</p>
+  {% endif %}
+  </main>
+</body>
+</html>
